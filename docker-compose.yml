@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/drug-indication-service
+      - JWT_SECRET=your-secret-key-here
+      - JWT_EXPIRATION_TIME=1h
+    depends_on:
+      - mongodb
+    networks:
+      - drug-indication-network
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - drug-indication-network
+
+networks:
+  drug-indication-network:
+    driver: bridge
+
+volumes:
+  mongodb_data: 
