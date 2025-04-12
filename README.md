@@ -421,19 +421,3 @@ The following core features from the original requirements have not been impleme
      }
    }
    ```
-
-## Implementation Roadmap
-
-### 1. Data Extraction from DailyMed
-The first phase focuses on automating drug label data collection. We'll create a service that fetches drug labels from DailyMed's API, parses the HTML content to extract relevant sections, and stores the raw data. This will include handling rate limits, error cases, and data validation. The extracted data will be stored in MongoDB with proper indexing for efficient querying.
-
-### 2. ICD-10 Code Mapping
-This phase implements medical vocabulary standardization. We'll create a mapping service that connects drug indications to ICD-10 codes using a combination of exact matches and fuzzy matching. The system will handle medical term synonyms and maintain a mapping database that can be updated and validated by medical professionals. This will ensure consistent terminology across the application.
-
-### 3. Eligibility Processing
-The third phase focuses on processing copay card eligibility details. We'll implement a parser that extracts structured information from free-text eligibility conditions. The system will identify key requirements like age limits, insurance conditions, and geographic restrictions. The parsed data will be stored in a standardized format that can be easily queried and updated.
-
-### 4. AI-Powered Extraction
-The final phase enhances data extraction accuracy using AI. We'll integrate with an AI service to improve the parsing of complex medical text and eligibility conditions. The system will learn from corrections and feedback, improving its accuracy over time. This will be implemented as an optional enhancement to the existing rule-based systems.
-
-Each phase will include proper testing, documentation, and monitoring to ensure reliability and maintainability. The implementation will follow the existing clean architecture pattern and maintain backward compatibility with the current system.
